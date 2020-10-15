@@ -140,17 +140,17 @@ console.log(batmobile.drive(100));
 
 
 function Baby(favoriteToy) {
-  Person.call(this, "Lucy", 5);
+  Person.call(this, favoriteToy);
   this.favoriteToy = favoriteToy;
 }
-Baby.prototype = Object.create(Person.prototype)
+Baby.prototype = Object.create(Person.prototype);
 
 Baby.prototype.play = function (){
   console.log(`Playing with ${this.favoriteToy}.`);
 }
-let baby = new
-Baby('trains');
-console.log(baby.toString());
+let baby = new Baby('Lucy', 5,'trains');
+console.log(baby.name);
+console.log(baby.age);
 console.log(baby.favoriteToy);
 console.log(baby.play());
 
