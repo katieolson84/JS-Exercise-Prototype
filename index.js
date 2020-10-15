@@ -116,20 +116,19 @@ Car.prototype.drive = function(distance){
     this.miles = (distance) / (this.milesPerGallon);
     this.tank = (this.tank) - (this.miles);
     if(this.miles >= ((this.tank) * (this.milesPerGallon))){
-      this.tank = 0
-
-    return `I ran out of fuel at ${this.odometer}`;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer}`;
     }
 }
 
-let pathFinder = new
-Car("Pathfinder", 20);
-console.log(pathFinder.milesPerGallon);
-console.log(pathFinder.fill(10));
-console.log(pathFinder);
-console.log(pathFinder.drive(50));
-console.log(pathFinder.drive(100));
-console.log(pathFinder.drive(50));
+let batmobile = new
+Car("batmobile", 20);
+console.log(batmobile.milesPerGallon);
+console.log(batmobile.fill(10));
+console.log(batmobile.drive(50));
+console.log(batmobile.drive(50));
+console.log(batmobile.drive(100));
+
 
 /*
   TASK 3
@@ -147,14 +146,13 @@ function Baby(favoriteToy) {
 Baby.prototype = Object.create(Person.prototype)
 
 Baby.prototype.play = function (){
-  console.log(`Playing with ${this.favoriteToy}, ${this.favoriteToy} being the favorite toy.`);
+  console.log(`Playing with ${this.favoriteToy}.`);
 }
 let baby = new
-Baby("doll");
-console.log(baby.name);
-console.log(baby.play("trains"));
+Baby('trains');
+console.log(baby.toString());
 console.log(baby.favoriteToy);
-
+console.log(baby.play());
 
 /* 
   TASK 4
