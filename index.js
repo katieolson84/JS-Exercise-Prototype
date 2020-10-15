@@ -145,10 +145,11 @@ function Baby(favoriteToy) {
 }
 Baby.prototype = Object.create(Person.prototype);
 
+let baby = new Baby('Lucy', 5, "trains");
+
 Baby.prototype.play = function (){
   console.log(`Playing with ${this.favoriteToy}.`);
 }
-let baby = new Baby('Lucy', 5,'trains');
 console.log(baby.name);
 console.log(baby.age);
 console.log(baby.favoriteToy);
