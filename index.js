@@ -39,9 +39,51 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-
+function Person(nameArr, ageArr) {
+  this.name = nameArr;
+  this.age = ageArr;
+  this.stomach = [];
 }
+Person.prototype.toString = function (){
+  return (`${this.name}, ${this.age}`);
+}
+
+Person.prototype.eat = function(someFood){
+  this.food = someFood;
+  if(this.stomach.length <= 9){
+    this.stomach.push(this.food);
+    return this.stomach;
+  }
+  else{
+     return `${this.name} is full.`;
+  };
+}
+Person.prototype.poop = function(){
+  if(this.stomach.length >=10){
+    this.stomach = [];
+    return `Stomach is empty`;
+  }
+}
+
+let neo = new
+Person("Neo", 20);
+console.log(neo.name, neo.age);
+console.log(neo.toString());
+console.log(neo.eat("banana"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.eat("apple"));
+console.log(neo.poop());
+console.log(neo.toString());
+
 
 /*
   TASK 2
@@ -57,9 +99,36 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-
+function Car(modelArr, milesPerGallonArr) {
+  this.model = modelArr;
+  this.milesPerGallon = milesPerGallonArr;
+  this.tank = 0;
+  this.odometer = 0;
 }
+
+Car.prototype.fill = function(gallons) {
+  this.tank = this.tank + (gallons);
+  return `Tank: ${this.tank}`;
+}
+
+Car.prototype.drive = function(distance){
+    this.odometer = this.odometer + (distance);
+    this.miles = (distance) / (this.milesPerGallon);
+    this.tank = (this.tank) - (this.miles);
+    if(this.miles >= ((this.tank) * (this.milesPerGallon))){
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer}`;
+    }
+}
+
+let batmobile = new
+Car("batmobile", 20);
+console.log(batmobile.milesPerGallon);
+console.log(batmobile.fill(10));
+console.log(batmobile.drive(50));
+console.log(batmobile.drive(50));
+console.log(batmobile.drive(100));
+
 
 /*
   TASK 3
@@ -68,18 +137,32 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
 
+
+function Baby(favoriteToy) {
+  Person.call(this, favoriteToy);
+  this.favoriteToy = favoriteToy;
 }
+Baby.prototype = Object.create(Person.prototype);
+
+let baby = new Baby('Lucy', 5, "trains");
+
+Baby.prototype.play = function (){
+  console.log(`Playing with ${this.favoriteToy}.`);
+}
+console.log(baby.name);
+console.log(baby.age);
+console.log(baby.favoriteToy);
+console.log(baby.play());
 
 /* 
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Refers to global object. 
+  2. To set this to a certain value, you need to use call or apply.
+  3. You can use bind to bound the first argument to this.
+  4. You can use this and new in a constructor, new tells it what this is. 
 */
 
 
